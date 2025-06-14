@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const http = require('http')
-const socketio = require('socket.io')
+const { Server } = require('socket.io')
 
 const staticBasePath = './static'
 // Static file server
@@ -20,7 +20,7 @@ const staticServe = (req, res) => {
 }
 
 const httpServer = http.createServer(staticServe)
-const io = socketio.listen(httpServer)
+const io = new Server(httpServer)
 const state = {
   active: false,
   users: [],

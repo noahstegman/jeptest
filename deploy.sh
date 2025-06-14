@@ -19,8 +19,8 @@ cd /var/www/buzzer
 # Install dependencies
 npm install
 
-# Start the application with PM2
-pm2 start index.js --name "buzzer"
+# Start the application with PM2 using ecosystem config
+pm2 start ecosystem.config.js
 pm2 save
 pm2 startup
 
@@ -47,5 +47,9 @@ sudo ln -s /etc/nginx/sites-available/buzzer /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl restart nginx
+
+# Set up automatic updates
+chmod +x update.sh
+(crontab -l 2>/dev/null; echo "*/5 * * * * /var/www/buzzer/update.sh >> /var/www/buzzer/update.log 2>&1") | crontab -
 
 echo "Deployment complete! Your buzzer system should be running at http://your-server-ip" 
