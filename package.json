@@ -1,0 +1,19 @@
+{
+  "name": "jeopardy-buzzer",
+  "version": "1.0.0",
+  "description": "Jeopardy-style buzzer system",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
